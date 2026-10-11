@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glow &amp; Grace — Makeup Artist, Blouse Designing &amp; Embroidery</title>
+  <meta name="description" content="Bridal and party makeup, custom blouse designing and hand embroidery. View the portfolio, read reviews and book your appointment." />
+  <meta name="theme-color" content="#5a2a3a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="brand" href="#home" data-bind="brandName">Glow &amp; Grace</a>
+    <nav id="menu" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-sm nav-cta" href="#contact">Book Now</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="blob b1"></div><div class="blob b2"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal" data-bind="tagline">Makeup · Blouse Designing · Embroidery</p>
+          <h1 class="reveal" style="--d:100ms" data-bind="heroTitle">Beauty, crafted with every stroke &amp; stitch</h1>
+          <p class="lead reveal" style="--d:200ms" data-bind="heroSubtitle"></p>
+          <div class="hero-actions reveal" style="--d:300ms">
+            <a class="btn" href="#contact">Book an Appointment</a>
+            <a class="btn btn-ghost" href="#gallery">View Portfolio</a>
+          </div>
+          <div class="stats reveal" style="--d:400ms" id="stats"></div>
+        </div>
+        <div class="hero-art reveal" style="--d:200ms">
+          <div class="arch" id="heroArt"></div>
+          <div class="badge"><span>✦</span> Bridal · Party · Custom</div>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#about" aria-label="Scroll down"><i></i></a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap about-grid">
+        <div class="about-art reveal"><div class="frame" id="aboutArt"></div></div>
+        <div class="about-copy">
+          <p class="eyebrow reveal">About</p>
+          <h2 class="reveal" style="--d:100ms" data-bind="aboutTitle"></h2>
+          <div class="reveal prose" style="--d:200ms" id="aboutText"></div>
+          <a class="link-arrow reveal" style="--d:300ms" href="#contact">Let’s create your look <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section tint">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow reveal">What I do</p>
+          <h2 class="reveal" style="--d:100ms">Services</h2>
+          <p class="sub reveal" style="--d:200ms">Thoughtfully designed, beautifully finished.</p>
+        </header>
+        <div class="grid services" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow reveal">Portfolio</p>
+          <h2 class="reveal" style="--d:100ms">Gallery</h2>
+          <p class="sub reveal" style="--d:200ms">A glimpse of recent makeovers, blouse designs and embroidery.</p>
+        </header>
+        <div class="chips reveal" id="chips" role="tablist"></div>
+        <div class="masonry" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section tint">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow reveal">Kind words</p>
+          <h2 class="reveal" style="--d:100ms">Client Reviews</h2>
+          <div class="rating-summary reveal" style="--d:200ms" id="ratingSummary"></div>
+        </header>
+
+        <div class="reviews-layout">
+          <div class="review-list" id="reviewList"></div>
+
+          <aside class="review-form-card reveal" id="reviewFormCard">
+            <h3>Share your experience</h3>
+            <p class="muted">Your words help other brides and clients. A photo is optional.</p>
+            <form id="reviewForm" novalidate>
+              <div class="field">
+                <label for="rvName">Your name</label>
+                <input id="rvName" name="name" maxlength="60" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <span class="label">Your rating</span>
+                <div class="stars-input" role="radiogroup" aria-label="Rating">
+                  <input type="radio" name="rating" id="st5" value="5" /><label for="st5" title="5 stars">★</label>
+                  <input type="radio" name="rating" id="st4" value="4" /><label for="st4" title="4 stars">★</label>
+                  <input type="radio" name="rating" id="st3" value="3" /><label for="st3" title="3 stars">★</label>
+                  <input type="radio" name="rating" id="st2" value="2" /><label for="st2" title="2 stars">★</label>
+                  <input type="radio" name="rating" id="st1" value="1" /><label for="st1" title="1 star">★</label>
+                </div>
+              </div>
+              <div class="field">
+                <label for="rvText">Your review</label>
+                <textarea id="rvText" name="content" rows="4" maxlength="1200" required></textarea>
+              </div>
+              <div class="field">
+                <span class="label">Add a photo <small>(optional)</small></span>
+                <label class="drop" id="rvDrop" for="rvFile">
+                  <input type="file" id="rvFile" accept="image/*" hidden />
+                  <span id="rvDropText">＋ Choose a photo</span>
+                  <img id="rvPreview" alt="" hidden />
+                </label>
+                <button type="button" class="link-btn" id="rvRemove" hidden>Remove photo</button>
+              </div>
+              <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button class="btn full" type="submit" id="rvSubmit">Post Review</button>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow reveal">Get in touch</p>
+          <h2 class="reveal" style="--d:100ms">Book Your Appointment</h2>
+          <p class="sub reveal" style="--d:200ms">Tell me about your occasion — I’ll get back to you personally.</p>
+        </header>
+
+        <div class="contact-grid">
+          <form class="card form reveal" id="contactForm" novalidate>
+            <div class="row">
+              <div class="field"><label for="cName">Name</label><input id="cName" name="name" maxlength="80" autocomplete="name" required /></div>
+              <div class="field"><label for="cPhone">Phone</label><input id="cPhone" name="phone" maxlength="30" inputmode="tel" autocomplete="tel" required /></div>
+            </div>
+            <div class="field">
+              <label for="cService">I’m interested in</label>
+              <select id="cService" name="service"></select>
+            </div>
+            <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" name="message" rows="4" maxlength="1500" placeholder="Date, occasion, outfit details…" required></textarea></div>
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button class="btn full" type="submit" id="cSubmit">Send Message</button>
+          </form>
+
+          <div class="contact-side">
+            <div class="card info reveal" style="--d:100ms">
+              <ul id="contactList"></ul>
+            </div>
+            <a class="card insta reveal" style="--d:200ms" id="instaCard" href="#" target="_blank" rel="noopener">
+              <span class="insta-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+              </span>
+              <span>
+                <strong>Follow on Instagram</strong>
+                <small id="instaHandle">@yourhandle</small>
+              </span>
+              <em>→</em>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-grid">
+      <div>
+        <div class="brand light" data-bind="brandName">Glow &amp; Grace</div>
+        <p class="muted-l" data-bind="tagline"></p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#about">About</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="foot-insta" id="footInsta" href="#" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p class="copy">© <span id="year"></span> <span data-bind="brandName"></span>. All rights reserved.</p>
+  </footer>
+
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" hidden>
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.3-2 1.35-.5.05-1.15.07-1.85-.12a15 15 0 0 1-4.9-3 8.7 8.7 0 0 1-2-3.3c-.2-.7 0-1.4.5-1.9.2-.2.4-.3.6-.3h.4c.15 0 .35 0 .5.4l.7 1.7c.05.15.1.3 0 .45l-.3.45c-.1.15-.2.3-.1.5.25.45.8 1.15 1.5 1.75.9.75 1.65 1 2.1 1.2.2.1.35.05.45-.1l.65-.8c.15-.2.3-.15.5-.1l1.6.8c.2.1.35.15.4.25.05.15.05.65-.2 1.35Z"/></svg>
+  </a>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" aria-label="Close">✕</button>
+    <button class="lb-nav prev" aria-label="Previous">‹</button>
+    <figure><img id="lbImg" alt="" /><figcaption id="lbCap"></figcaption></figure>
+    <button class="lb-nav next" aria-label="Next">›</button>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Studio Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <!-- LOGIN -->
+  <div class="login" id="login">
+    <form class="login-card" id="loginForm">
+      <div class="logo">✦</div>
+      <h1>Studio Admin</h1>
+      <p>Sign in to manage your website.</p>
+      <input type="password" id="pw" placeholder="Admin password" autocomplete="current-password" required />
+      <button class="btn" type="submit" id="loginBtn">Sign in</button>
+      <a href="/" class="back">← Back to website</a>
+    </form>
+  </div>
+
+  <!-- APP -->
+  <div class="app" id="app" hidden>
+    <header class="top">
+      <strong class="title">Studio Admin</strong>
+      <nav class="tabs" id="tabs">
+        <button data-tab="content" class="on">Site Content</button>
+        <button data-tab="services">Services</button>
+        <button data-tab="gallery">Gallery</button>
+        <button data-tab="reviews">Reviews <span class="pill" id="pillReviews" hidden></span></button>
+        <button data-tab="messages">Messages <span class="pill" id="pillMessages" hidden></span></button>
+      </nav>
+      <div class="top-actions">
+        <a href="/" target="_blank" class="btn btn-ghost sm">View site ↗</a>
+        <button class="btn btn-ghost sm" id="logout">Sign out</button>
+      </div>
+    </header>
+    <main class="panel" id="panel"></main>
+  </div>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
