@@ -10,11 +10,18 @@ export default async function handler(req, res) {
 
     // ---- Public: list published reviews / admin: list everything
     if (req.method === 'GET') {
-      if (req.query.all === '1') {
-        if (!requireAdmin(req, res)) return;
-        return res.json(await col.find().sort({ createdAt: -1 }).limit(500).toArray());
+      try {
+        const db = await getDb();
+        const col = db.collection('reviews');
+        if (req.query.all === '1') {
+          if (!requireAdmin(req, res)) return;
+          return res.json(await col.find().sort({ createdAt: -1 }).limit(500).toArray());
+        }
+        return res.json(await col.find({ status: 'published' }).sort({ createdAt: -1 }).limit(60).toArray());
+      } catch (err) {
+        console.warn('Reviews GET fallback:', err?.message);
+        return res.json([]);
       }
-      return res.json(await col.find({ status: 'published' }).sort({ createdAt: -1 }).limit(60).toArray());
     }
 
     // ---- Public: post a review (photo optional)

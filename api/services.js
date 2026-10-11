@@ -14,13 +14,21 @@ function readImage(raw) {
 export default async function handler(req, res) {
   if (!requireAdmin(req, res)) return;
 
+  if (req.method === 'GET') {
+    try {
+      const db = await getDb();
+      const col = db.collection('services');
+      const items = await col.find().sort({ order: 1, createdAt: 1 }).toArray();
+      return res.json(items.length ? items : defaultServices);
+    } catch (err) {
+      console.warn('Services GET fallback to defaultServices:', err?.message);
+      return res.json(defaultServices);
+    }
+  }
+
   try {
     const db = await getDb();
     const col = db.collection('services');
-
-    if (req.method === 'GET') {
-      return res.json(await col.find().sort({ order: 1, createdAt: 1 }).toArray());
-    }
 
     if (req.method === 'POST') {
       const b = req.body || {};

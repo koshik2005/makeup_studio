@@ -21,15 +21,17 @@ const TEXT_LIMITS = {
 export default async function handler(req, res) {
   if (!requireAdmin(req, res)) return;
 
-  try {
-    const db = await getDb();
-    const col = db.collection('content');
-    const current = await col.findOne({ _id: 'main' });
-
     if (req.method === 'GET') {
-      const content = { ...defaultContent, ...(current || {}) };
-      delete content._id;
-      return res.json(content);
+      try {
+        const db = await getDb();
+        const current = await db.collection('content').findOne({ _id: 'main' });
+        const content = { ...defaultContent, ...(current || {}) };
+        delete content._id;
+        return res.json(content);
+      } catch (err) {
+        console.warn('Content GET fallback to defaultContent:', err?.message);
+        return res.json(defaultContent);
+      }
     }
 
     if (req.method === 'PUT') {

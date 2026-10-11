@@ -35,7 +35,12 @@ export default async function handler(req, res) {
     if (!requireAdmin(req, res)) return;
 
     if (req.method === 'GET') {
-      return res.json(await col.find().sort({ createdAt: -1 }).limit(300).toArray());
+      try {
+        return res.json(await col.find().sort({ createdAt: -1 }).limit(300).toArray());
+      } catch (err) {
+        console.warn('Messages GET fallback:', err?.message);
+        return res.json([]);
+      }
     }
 
     const id = toId(req.query.id);

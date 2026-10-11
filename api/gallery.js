@@ -6,13 +6,20 @@ import { cleanImage, destroy } from '../lib/cloud.js';
 export default async function handler(req, res) {
   if (!requireAdmin(req, res)) return;
 
+  if (req.method === 'GET') {
+    try {
+      const db = await getDb();
+      const col = db.collection('gallery');
+      return res.json(await col.find().sort({ createdAt: -1 }).limit(500).toArray());
+    } catch (err) {
+      console.warn('Gallery GET fallback:', err?.message);
+      return res.json([]);
+    }
+  }
+
   try {
     const db = await getDb();
     const col = db.collection('gallery');
-
-    if (req.method === 'GET') {
-      return res.json(await col.find().sort({ createdAt: -1 }).limit(500).toArray());
-    }
 
     if (req.method === 'POST') {
       const b = req.body || {};
