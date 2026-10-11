@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "dev:vercel": "vercel dev"
+    "dev:vercel": "vercel dev",
+    "seed": "node scripts/seed.js"
   },
   "dependencies": {
     "cloudinary": "^2.5.1",

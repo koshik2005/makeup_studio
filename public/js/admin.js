@@ -46,11 +46,18 @@ $('#tabs').addEventListener('click', (e) => {
   if (b) go(b.dataset.tab);
 });
 
-function go(name) {
+async function go(name) {
   tab = name;
   $$('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === name));
   $('#panel').innerHTML = '<p class="empty">Loading…</p>';
-  ({ content: viewContent, services: viewServices, gallery: viewGallery, reviews: viewReviews, messages: viewMessages })[name]();
+  try {
+    const fns = { content: viewContent, services: viewServices, gallery: viewGallery, reviews: viewReviews, messages: viewMessages };
+    if (fns[name]) await fns[name]();
+  } catch (err) {
+    console.error(`Failed to load ${name}:`, err);
+    $('#panel').innerHTML = `<div class="card" style="text-align:center;padding:2rem"><p class="hint" style="color:var(--danger)">Failed to load ${esc(name)}: ${esc(err.message)}</p><button class="btn sm" style="margin-top:1rem" id="retryTabBtn">Retry</button></div>`;
+    $('#retryTabBtn')?.addEventListener('click', () => go(name));
+  }
 }
 
 async function refreshPills() {
