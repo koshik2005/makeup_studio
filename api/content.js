@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       for (const key of ['heroImage', 'aboutImage']) {
         if (!(key in b)) continue;
         const img = b[key] ? cleanImage(b[key]) : null;
-        if (b[key] && (!img || !img.publicId.startsWith('studio/site/'))) return bad(res, 'Invalid image.');
+        if (b[key] && !img) return bad(res, 'Invalid image.');
         const oldPid = current?.[`${key}PublicId`];
         if (oldPid && oldPid !== img?.publicId) await destroy(oldPid);
         set[key] = img?.url || '';

@@ -7,7 +7,7 @@ import { cleanImage, destroy } from '../lib/cloud.js';
 function readImage(raw) {
   if (!raw) return { image: '', imagePublicId: '' };
   const img = cleanImage(raw);
-  if (!img || !img.publicId.startsWith('studio/site/')) return null;
+  if (!img) return null;
   return { image: img.url, imagePublicId: img.publicId };
 }
 

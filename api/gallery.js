@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
       const b = req.body || {};
       const img = cleanImage(b);
-      if (!img || !img.publicId.startsWith('studio/site/')) return bad(res, 'Invalid image.');
+      if (!img) return bad(res, 'Invalid image.');
       const doc = {
         url: img.url,
         publicId: img.publicId,
